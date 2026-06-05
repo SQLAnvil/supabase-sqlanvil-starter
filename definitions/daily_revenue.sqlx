@@ -1,0 +1,19 @@
+config {
+  type: "incremental",
+  description: "Daily revenue. Incremental upsert keyed on order_date.",
+  uniqueKey: ["order_date"]
+}
+
+SELECT
+  order_date,
+  SUM(amount_cents) AS revenue_cents
+FROM ${ref("raw_orders")}
+${when(incremental(),
+  `WHERE order_date > (SELECT COALESCE(MAX(order_date), DATE '1900-01-01') FROM ${self()})`)}
+GROUP BY order_date
+
+post_operations {
+  -- One-time DDL: wrapped in when(!incremental()) so it only runs on create /
+  -- --full-refresh, not on every append. The PK also gives the upsert its ON CONFLICT target.
+  ${when(!incremental(), `ALTER TABLE ${self()} ADD PRIMARY KEY (order_date)`)}
+}

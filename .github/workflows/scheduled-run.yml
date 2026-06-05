@@ -1,0 +1,38 @@
+name: sqlanvil scheduled run
+
+# Runs your SQLAnvil models against Supabase on a schedule (and on manual trigger).
+# Setup: add your .df-credentials.json contents as a repo secret named SQLANVIL_CREDENTIALS
+# (Settings → Secrets and variables → Actions → New repository secret).
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily at 06:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install SQLAnvil CLI
+        run: npm i -g @sqlanvil/cli
+
+      - name: Write credentials
+        env:
+          SQLANVIL_CREDENTIALS: ${{ secrets.SQLANVIL_CREDENTIALS }}
+        run: printf '%s' "$SQLANVIL_CREDENTIALS" > .df-credentials.json
+
+      - name: Compile
+        run: sqlanvil compile .
+
+      - name: Run
+        run: sqlanvil run . --credentials .df-credentials.json
+
+      - name: Clean up credentials
+        if: always()
+        run: rm -f .df-credentials.json

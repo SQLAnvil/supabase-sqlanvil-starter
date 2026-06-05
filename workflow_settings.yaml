@@ -1,0 +1,6 @@
+warehouse: supabase
+defaultDataset: sqlanvil_starter
+defaultAssertionDataset: sqlanvil_starter_assertions
+sqlanvilCoreVersion: 1.0.1
+vars:
+  currency: USD

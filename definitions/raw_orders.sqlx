@@ -1,0 +1,11 @@
+config {
+  type: "table",
+  description: "Sample orders. Stands in for a real source so this runs on a fresh Supabase. Replace with a declaration of your own table — see the README."
+}
+
+SELECT * FROM (
+  VALUES
+    (1, 101, DATE '2024-01-01', 1000),
+    (2, 102, DATE '2024-01-01', 2500),
+    (3, 101, DATE '2024-01-02', 1500)
+) AS t(order_id, customer_id, order_date, amount_cents)

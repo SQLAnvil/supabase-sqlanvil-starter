@@ -1,0 +1,5 @@
+# Real credentials — never commit (copy .df-credentials.example.json → .df-credentials.json)
+.df-credentials.json
+
+node_modules/
+.DS_Store
