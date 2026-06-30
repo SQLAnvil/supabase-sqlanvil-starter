@@ -1,8 +1,0 @@
-config {
-  type: "export",
-  export: {
-    location: "/tmp/oops.parquet",
-    format: "parquet"
-  }
-}
-select 1 as x
