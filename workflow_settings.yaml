@@ -4,4 +4,4 @@ defaultAssertionDataset: sqlanvil_starter_assertions
 sqlanvilCoreVersion: 1.13.0
 vars:
   currency: USD
-# CI trigger: 1.13 runner image + 1.13 project (no per-run CLI install)
+# CI trigger: brokered run validation (Stage 4)
