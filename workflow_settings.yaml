@@ -1,7 +1,7 @@
 warehouse: supabase
 defaultDataset: sqlanvil_starter
 defaultAssertionDataset: sqlanvil_starter_assertions
-sqlanvilCoreVersion: 1.12.0
+sqlanvilCoreVersion: 1.13.0
 vars:
   currency: USD
-# CI trigger: production run-detail capture validation
+# CI trigger: 1.13 runner image + 1.13 project (no per-run CLI install)
