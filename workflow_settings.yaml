@@ -1,6 +1,15 @@
 warehouse: supabase
 defaultDataset: sqlanvil_starter
 defaultAssertionDataset: sqlanvil_starter_assertions
-sqlanvilCoreVersion: 1.13.0
+sqlanvilCoreVersion: 1.15.0
+connections:
+  # Read-only BigQuery source in keyless runner-extract mode: the hosted runner reads the source and
+  # materializes the rows into a plain table (no FDW, no Vault secret, no wrappers/postgis on the branch).
+  bigquery_public:
+    platform: bigquery
+    project: bigquery-public-data
+    dataset: geo_us_boundaries
+    billingProject: sqlanvil
+    mode: runner-extract
 vars:
   currency: USD

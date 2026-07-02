@@ -1,0 +1,6 @@
+config {
+  type: "declaration",
+  connection: "bigquery_public",
+  name: "zip_codes",
+  columnTypes: { zip_code: "text" }
+}

@@ -1,0 +1,5 @@
+config { type: "table" }
+
+-- Proves the runner-extract source is a usable, ref()-able table: count the materialized ZIP rows.
+select count(*)::int as zip_count
+from ${ref("zip_codes")}
