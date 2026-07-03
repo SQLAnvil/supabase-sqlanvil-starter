@@ -77,3 +77,4 @@ as a repository secret named `SQLANVIL_CREDENTIALS` (Settings → Secrets and va
 ## Links
 - Docs: https://sqlanvil.com/docs/
 - SQLAnvil: https://github.com/SQLAnvil/sqlanvil
+<!-- release-pinning e2e touch 2026-07-02 -->
