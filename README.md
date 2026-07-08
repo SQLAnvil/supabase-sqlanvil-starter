@@ -1,5 +1,7 @@
 # supabase-sqlanvil-starter
 
+TEST2
+
 **Analytics engineering for Supabase, in ~5 minutes.** A ready-to-run [SQLAnvil](https://github.com/SQLAnvil/sqlanvil)
 project that builds derived tables, an incremental daily rollup, a materialized view, and a
 data-quality assertion — right inside your Supabase Postgres database. No data warehouse required.
