@@ -1,0 +1,5 @@
+# sqlanvil-sqlx-lint — https://github.com/SQLAnvil/sqlanvil-sqlx-lint
+# The warehouse is read from workflow_settings.yaml. The starter keeps its
+# models undocumented on purpose (they are placeholders you replace), so
+# column-documentation coverage is off here; enable it in your own project.
+disable = ["E002", "E010"]

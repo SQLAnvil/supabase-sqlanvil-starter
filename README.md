@@ -74,6 +74,15 @@ a `--schema-suffix dev` run still reads your real source while writing to a `_de
 `.github/workflows/scheduled-run.yml` runs `sqlanvil run` on a daily cron. Add your credentials JSON
 as a repository secret named `SQLANVIL_CREDENTIALS` (Settings → Secrets and variables → Actions).
 
+## Conventions check (pre-commit)
+
+`.pre-commit-config.yaml` runs [sqlanvil-sqlx-lint](https://github.com/SQLAnvil/sqlanvil-sqlx-lint)
+on every `.sqlx` you commit: `${ref()}` instead of hardcoded `schema.table`, `---` (not `;`) between
+statements, no BigQuery-only config on Postgres, one-time DDL on incrementals wrapped in
+`when(!incremental(), …)`. Install once with `pip install pre-commit && pre-commit install`.
+`.sqlx-lint.toml` turns column-documentation coverage off for the placeholder models; turn it on
+(delete the `disable` line) once you document your own.
+
 ## Links
 - Docs: https://sqlanvil.com/docs/
 - SQLAnvil: https://github.com/SQLAnvil/sqlanvil
